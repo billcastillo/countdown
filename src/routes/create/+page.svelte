@@ -25,7 +25,6 @@
 
 		newDate.setHours(parseInt(hours, 10));
 		newDate.setMinutes(parseInt(minutes, 10));
-		console.log('1newDate: ', newDate);
 
 		// apply selected timezone
 		newDate = new Date(
@@ -34,14 +33,11 @@
 			})
 		);
 
-		console.log('2newDate: ', newDate);
 		return newDate;
 	});
 
 	const createURL = () => {
-		console.log('selectedDate: ', selectedDate);
 		const dateISO = selectedDate.toISOString();
-		console.log('dateISO: ', dateISO);
 		const compressedConfig = compressForUrl({
 			title,
 			description
@@ -72,8 +68,35 @@
 				<strong>Create a countdown</strong>
 			</h1>
 			<form class="font-fira">
-				<div class="flex gap-4 flex-wrap">
-					<div class="form-group w-full grow">
+				<div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+					<div class="form-group w-full">
+						<label
+							class="mb-1 uppercase text-sm md:text-xl font-fira font-bold tracking-widest"
+							for="countdown_date">Date</label
+						>
+						<input
+							name="countdown_date"
+							class="form-input xs:text-xs sm:text-2xl"
+							id="countdown_date"
+							type="date"
+							bind:value={dateForCountdown}
+							required
+						/>
+					</div>
+					<div class="form-group w-full">
+						<label
+							class="mb-1 uppercase text-sm md:text-xl font-fira font-bold tracking-widest"
+							for="countdown_time">Time</label
+						>
+						<input
+							name="countdown_time"
+							class="form-input xs:text-xs sm:text-2xl"
+							id="countdown_time"
+							type="time"
+							bind:value={timeForCountdown}
+						/>
+					</div>
+					<div class="form-group w-full">
 						<label
 							class="mb-1 uppercase text-sm font-fira font-bold tracking-widest"
 							for="countdown_title">Event Title</label
@@ -88,7 +111,7 @@
 							maxlength="64"
 						/>
 					</div>
-					<div class="form-group w-full grow">
+					<div class="form-group w-full">
 						<label
 							class="mb-1 uppercase text-sm font-fira font-bold tracking-widest"
 							for="countdown_desc">Description (Optional)</label
@@ -104,34 +127,8 @@
 						/>
 					</div>
 
-					<div class="form-group flex-1 w-[50%]">
-						<label
-							class="mb-1 uppercase text-sm font-fira font-bold tracking-widest"
-							for="countdown_date">Date</label
-						>
-						<input
-							name="countdown_date"
-							class="form-input xs:text-xs sm:text-xl"
-							id="countdown_date"
-							type="date"
-							bind:value={dateForCountdown}
-							required
-						/>
-					</div>
-					<div class="form-group flex-1 w-[50%]">
-						<label
-							class="mb-1 uppercase text-sm font-fira font-bold tracking-widest"
-							for="countdown_time">Time</label
-						>
-						<input
-							name="countdown_time"
-							class="form-input xs:text-xs sm:text-xl"
-							id="countdown_time"
-							type="time"
-							bind:value={timeForCountdown}
-						/>
-					</div>
-					<div class="form-group flex-1 w-[50%]">
+
+					<div class="form-group w-full">
 						<label
 							class="mb-1 uppercase text-sm font-fira font-bold tracking-widest"
 							for="countdown_timezone">Timezone (Optional)</label

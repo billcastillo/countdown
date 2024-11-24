@@ -10,12 +10,15 @@
 </script>
 
 <div data-time={id} class="flex-1">
-	<span class="block font-bruno text-time-block text-black leading-none">
+	<span
+		class="block font-bruno text-time-block text-black leading-none"
+		aria-labelledby={`time-block-${label}`}
+	>
 		{data}
 	</span>
 	<span
 		class="block text-sm text-gray-600 md:text-lg font-fira uppercase tracking-widest"
-		>{label}</span
+		id={`time-block-${label}`}>{label}</span
 	>
 </div>
 

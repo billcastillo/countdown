@@ -21,9 +21,11 @@
 			>
 		</h2>
 
-		<h3 class="block font-fira text-lg text-gray-600">
-			{description}
-		</h3>
+		{#if description}
+			<h3 class="block font-fira text-lg text-gray-600">
+				{description}
+			</h3>
+		{/if}
 	</div>
 
 	<div>
